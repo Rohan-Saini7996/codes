@@ -1,0 +1,34 @@
+
+public class Main
+{
+    
+  static  int countOnes(int arr[], int N,int low,int high)
+{
+    
+    // Your code here
+    
+    
+    while(low<=high){
+        int mid = (low+high)/2;
+        if((mid==high)||(arr[mid+1]==0) && arr[mid]==1){
+            return mid+1;
+        }
+        if(arr[mid]==1){
+            return countOnes(arr,N,(mid+1),high);
+        }else{
+            return countOnes(arr,N,low,(mid-1));
+        }
+         
+    }
+    
+    return 0;
+}
+    
+	public static void main(String[] args) {
+		 int arr[] = { 1, 1, 0, 0, 0, 0, 0 };
+        int n = arr.length;
+        System.out.println("Count of 1's in given array is "+ countOnes(arr, n,0,n-1));
+	}
+}
+
+
